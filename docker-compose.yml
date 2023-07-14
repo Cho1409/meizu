@@ -37,13 +37,12 @@ services:
     restart: always
     ports:
       - 8429:8429
+    volumes:
+      - ./vmagent/vmagent.yaml:/opt/vmagent.yaml
     command: [
-      '-promscrape.config=/etc/vmagent.yaml',
+      '-promscrape.config=/opt/vmagent.yaml',
       '-remoteWrite.url=http://victoriametrics:8428/api/v1/write'
-    ]
-    environment:
-      - VMAGENT_CONFIG=${VMAGENT_CONFIG}
-      - VMAGENT_REMOTE_WRITE_URL=http://victoriametrics:8428/api/v1/write    
+    ]   
 
   grafana:
     image: grafana/grafana
