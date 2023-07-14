@@ -38,7 +38,7 @@ services:
     ports:
       - 8429:8429
     volumes:
-      - ./vmagent.yaml:/etc/vmagent.yaml
+      - ./vmagent/vmagent.yaml:/etc/vmagent.yaml
     command: [
       '-promscrape.config=/etc/vmagent.yaml',
       '-remoteWrite.url=http://victoriametrics:8428/api/v1/write'
